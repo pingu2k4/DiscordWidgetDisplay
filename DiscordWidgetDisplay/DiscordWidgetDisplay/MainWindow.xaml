@@ -94,6 +94,9 @@
                         <DataTrigger Binding="{Binding Path=IsChecked, ElementName=ShowAddressButton}" Value="True">
                             <Setter Property="Visibility" Value="Visible" />
                         </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=IsChecked, ElementName=ShowChatToggle}" Value="True">
+                            <Setter Property="MaxWidth" Value="578" />
+                        </DataTrigger>
                     </Style.Triggers>
                 </Style>
             </StackPanel.Style>
@@ -113,7 +116,7 @@
             </DockPanel>
         </StackPanel>
 
-        <wv2:WebView2 Name="ChatWebView" DefaultBackgroundColor="transparent" Height="215" Width="580" DockPanel.Dock="Top">
+        <wv2:WebView2 Name="ChatWebView" DefaultBackgroundColor="transparent" Height="215" Width="578" DockPanel.Dock="Top">
             <wv2:WebView2.Style>
                 <Style TargetType="wv2:WebView2">
                     <Setter Property="Visibility" Value="Visible" />
