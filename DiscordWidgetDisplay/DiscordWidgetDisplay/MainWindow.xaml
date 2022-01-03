@@ -59,6 +59,9 @@
         <Border Background="#ff0000" Height="20" DockPanel.Dock="Top" MouseDown="Border_MouseDown">
             <StackPanel Orientation="Horizontal" Margin="1,0">
                 <ToggleButton x:Name="ShowAddressButton" Style="{DynamicResource TitleToggle}">Address</ToggleButton>
+                <Button Style="{DynamicResource TitleButton}" Margin="1,1,0,1" Click="ReloadClicked">
+                    <Image Source="pack://application:,,,/Images/Reload.png" Margin="1"></Image>
+                </Button>
             </StackPanel>
         </Border>
 
@@ -66,6 +69,7 @@
             <StackPanel.Style>
                 <Style TargetType="StackPanel">
                     <Setter Property="Visibility" Value="Collapsed" />
+                    <Setter Property="MaxWidth" Value="312" />
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding Path=IsChecked, ElementName=ShowAddressButton}" Value="True">
                             <Setter Property="Visibility" Value="Visible" />

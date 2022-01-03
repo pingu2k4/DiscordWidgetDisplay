@@ -33,13 +33,13 @@ namespace DiscordWidgetDisplay
         {
             if (Settings.LastVoiceLocation is not null)
             {
-                VoiceWebView.Source = new Uri(Settings.LastVoiceLocation);
+                VoiceWebView.Source = new Uri(SantizeUrl(Settings.LastVoiceLocation));
                 VoiceAddressBox.Text = Settings.LastVoiceLocation;
             }
 
             if(Settings.LastChatLocation is not null)
             {
-                ChatWebView.Source = new Uri(Settings.LastChatLocation);
+                ChatWebView.Source = new Uri(SantizeUrl(Settings.LastChatLocation));
                 ChatAddressBox.Text = Settings.LastChatLocation;
             }
 
@@ -78,6 +78,12 @@ namespace DiscordWidgetDisplay
         private void ChatAddressGoButton(object sender, RoutedEventArgs e)
         {
             NavigateChat(ChatAddressBox.Text);
+        }
+
+        private void ReloadClicked(object sender, RoutedEventArgs e)
+        {
+            VoiceWebView.Reload();
+            ChatWebView.Reload();
         }
 
         private void VoiceAddressBoxKeyDown(object sender, KeyEventArgs e)
