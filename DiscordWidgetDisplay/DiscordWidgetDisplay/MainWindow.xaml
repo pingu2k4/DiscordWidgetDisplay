@@ -76,10 +76,10 @@
                         Top
                     </ToggleButton>
                 </StackPanel>
-                <Button Style="{DynamicResource TitleButton}" DockPanel.Dock="Right">
-                    Close
+                <Button Style="{DynamicResource TitleButton}" DockPanel.Dock="Right" Click="CloseClicked">
+                    <Image Source="pack://application:,,,/Images/Close.png" Margin="1"></Image>
                 </Button>
-                <Button Style="{DynamicResource TitleButton}" DockPanel.Dock="Right" Margin="0,0,1,0" Click="AboutClicked">
+                <Button Style="{DynamicResource TitleButton}" DockPanel.Dock="Right" Margin="1,0,1,0" Click="AboutClicked">
                     About
                 </Button>
             </DockPanel>

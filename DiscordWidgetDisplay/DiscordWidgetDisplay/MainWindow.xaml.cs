@@ -90,6 +90,11 @@ namespace DiscordWidgetDisplay
             ChatWebView.Reload();
         }
 
+        private void CloseClicked(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
         private void VoiceAddressBoxKeyDown(object sender, KeyEventArgs e)
         {
             if(e.Key == Key.Enter)
