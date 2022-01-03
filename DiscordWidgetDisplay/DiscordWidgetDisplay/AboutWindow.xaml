@@ -1,0 +1,31 @@
+﻿<Window x:Class="DiscordWidgetDisplay.AboutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DiscordWidgetDisplay"
+        mc:Ignorable="d"
+        Title="About"
+        MaxWidth="400"
+        SizeToContent="WidthAndHeight">
+    <StackPanel Margin="5">
+        <TextBlock Text="Discord Widget Display" FontSize="20" HorizontalAlignment="Center" />
+        <Separator Margin="40,5" />
+        <TextBlock Text="This is an application to assist in showing voice / text chat from discord made by Pingu of PinguApps. (Pingu#7389)" TextWrapping="Wrap" />
+        <Separator Margin="40,5" />
+        <TextBlock Text="You need to grab your voice and chat URL from Discord streamkit. Go to the streamkit (button at bottom of this window will take you there) then select either option. Select the chat widget tab or voice widget tab and you will be able to customise them how you like, then enter them into the address bars." TextWrapping="Wrap" />
+        <TextBlock Text="The second button on the title bar will reload both views." TextWrapping="Wrap" />
+        <TextBlock Text="The Voice and Chat buttons on the title bar will toggle visibility of the respective views" TextWrapping="Wrap" />
+        <TextBlock Text="The Top button will toggle whether the window is topmost or not. (Pinned in front of other windows)" TextWrapping="Wrap" />
+        <Separator Margin="40,5" />
+        <TextBlock Text="This project is opensourced on Github, so all code is visible there." TextWrapping="Wrap" HorizontalAlignment="Center" />
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,5">
+            <Button Margin="0,0,5,0" Padding="5,0" Click="DiscordStreamkitCLicked">
+                Discord Streamkit
+            </Button>
+            <Button Padding="5,0" Click="GithubRepoClicked">
+                Github Repo
+            </Button>
+        </StackPanel>
+    </StackPanel>
+</Window>

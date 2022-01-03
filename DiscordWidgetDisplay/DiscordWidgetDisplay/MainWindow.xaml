@@ -57,20 +57,28 @@
     <DockPanel LastChildFill="True">
 
         <Border Background="#ff0000" Height="20" DockPanel.Dock="Top" MouseDown="Border_MouseDown">
-            <StackPanel Orientation="Horizontal" Margin="1,0">
-                <ToggleButton x:Name="ShowAddressButton" Style="{DynamicResource TitleToggle}">Address</ToggleButton>
-                <Button Style="{DynamicResource TitleButton}" Margin="1,1,0,1" Click="ReloadClicked">
-                    <Image Source="pack://application:,,,/Images/Reload.png" Margin="1"></Image>
-                </Button>
-                <ToggleButton x:Name="ShowVoiceToggle" Style="{DynamicResource TitleToggle}" Margin="1,0,0,0"
+            <DockPanel Margin="1" HorizontalAlignment="Stretch" LastChildFill="False">
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
+                    <ToggleButton x:Name="ShowAddressButton" Style="{DynamicResource TitleToggle}">Address</ToggleButton>
+                    <Button Style="{DynamicResource TitleButton}" Margin="1,0,0,0" Click="ReloadClicked">
+                        <Image Source="pack://application:,,,/Images/Reload.png" Margin="1"></Image>
+                    </Button>
+                    <ToggleButton x:Name="ShowVoiceToggle" Style="{DynamicResource TitleToggle}" Margin="1,0,0,0"
                               Checked="VoiceToggleChanged" Unchecked="VoiceToggleChanged">
-                    Voice
-                </ToggleButton>
-                <ToggleButton x:Name="ShowChatToggle" Style="{DynamicResource TitleToggle}" Margin="1,0,0,0"
+                        Voice
+                    </ToggleButton>
+                    <ToggleButton x:Name="ShowChatToggle" Style="{DynamicResource TitleToggle}" Margin="1,0,0,0"
                               Checked="ChatToggleChanged" Unchecked="ChatToggleChanged">
-                    Chat
-                </ToggleButton>
-            </StackPanel>
+                        Chat
+                    </ToggleButton>
+                </StackPanel>
+                <Button Style="{DynamicResource TitleButton}" DockPanel.Dock="Right">
+                    Close
+                </Button>
+                <Button Style="{DynamicResource TitleButton}" DockPanel.Dock="Right" Margin="0,0,1,0" Click="AboutClicked">
+                    About
+                </Button>
+            </DockPanel>
         </Border>
 
         <StackPanel DockPanel.Dock="Top" Orientation="Vertical" Background="#F00">

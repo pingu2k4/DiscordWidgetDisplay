@@ -140,5 +140,11 @@ namespace DiscordWidgetDisplay
             Settings.ChatVisible = ShowChatToggle.IsChecked ?? true;
             Settings.Save();
         }
+
+        private void AboutClicked(object sender, RoutedEventArgs e)
+        {
+            var aboutWindow = new AboutWindow();
+            aboutWindow.ShowDialog();
+        }
     }
 }
