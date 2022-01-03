@@ -69,4 +69,6 @@ internal class Settings
     public bool VoiceVisible { get; set; } = true;
 
     public bool ChatVisible { get; set; } = false;
+
+    public bool Topmost { get; set; } = true;
 }

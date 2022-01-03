@@ -54,6 +54,7 @@ namespace DiscordWidgetDisplay
 
             ShowVoiceToggle.IsChecked = Settings.VoiceVisible;
             ShowChatToggle.IsChecked = Settings.ChatVisible;
+            TopmostToggle.IsChecked = Settings.Topmost;
 
             await VoiceWebView.EnsureCoreWebView2Async();
             await ChatWebView.EnsureCoreWebView2Async();
@@ -137,7 +138,13 @@ namespace DiscordWidgetDisplay
 
         private void ChatToggleChanged(object sender, RoutedEventArgs e)
         {
-            Settings.ChatVisible = ShowChatToggle.IsChecked ?? true;
+            Settings.ChatVisible = ShowChatToggle.IsChecked ?? false;
+            Settings.Save();
+        }
+
+        private void TopToggleChanged(object sender, RoutedEventArgs e)
+        {
+            Settings.Topmost = TopmostToggle.IsChecked ?? true;
             Settings.Save();
         }
 

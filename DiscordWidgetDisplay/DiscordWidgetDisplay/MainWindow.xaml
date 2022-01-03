@@ -9,7 +9,7 @@
         Background="Transparent"
         AllowsTransparency="True"
         WindowStyle="None"
-        Topmost="True"
+        Topmost="{Binding Path=IsChecked, ElementName=TopmostToggle}"
         SizeToContent="WidthAndHeight">
 
     <Window.Resources>
@@ -70,6 +70,10 @@
                     <ToggleButton x:Name="ShowChatToggle" Style="{DynamicResource TitleToggle}" Margin="1,0,0,0"
                               Checked="ChatToggleChanged" Unchecked="ChatToggleChanged">
                         Chat
+                    </ToggleButton>
+                    <ToggleButton x:Name="TopmostToggle" Style="{DynamicResource TitleToggle}" Margin="1,0,0,0"
+                              Checked="TopToggleChanged" Unchecked="TopToggleChanged">
+                        Top
                     </ToggleButton>
                 </StackPanel>
                 <Button Style="{DynamicResource TitleButton}" DockPanel.Dock="Right">
