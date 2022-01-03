@@ -33,20 +33,51 @@ namespace DiscordWidgetDisplay
         {
             if (Settings.LastVoiceLocation is not null)
             {
-                webView.Source = new Uri(Settings.LastVoiceLocation);
+                VoiceWebView.Source = new Uri(Settings.LastVoiceLocation);
                 VoiceAddressBox.Text = Settings.LastVoiceLocation;
             }
-            await webView.EnsureCoreWebView2Async();
+
+            if(Settings.LastChatLocation is not null)
+            {
+                ChatWebView.Source = new Uri(Settings.LastChatLocation);
+                ChatAddressBox.Text = Settings.LastChatLocation;
+            }
+
+            if (Settings.Top is not null)
+            {
+                this.Top = Settings.Top.Value;
+            }
+            if (Settings.Left is not null)
+            {
+                this.Left = Settings.Left.Value;
+            }
+
+            await VoiceWebView.EnsureCoreWebView2Async();
+            await ChatWebView.EnsureCoreWebView2Async();
+
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
+            SaveWindowLocation();
+        }
+
+        private void SaveWindowLocation()
+        {
+            Settings.Top = this.Top;
+            Settings.Left = this.Left;
+            Settings.Save();
         }
 
         private void VoiceAddressGoButton(object sender, RoutedEventArgs e)
         {
             NavigateVoice(VoiceAddressBox.Text);
+        }
+
+        private void ChatAddressGoButton(object sender, RoutedEventArgs e)
+        {
+            NavigateChat(ChatAddressBox.Text);
         }
 
         private void VoiceAddressBoxKeyDown(object sender, KeyEventArgs e)
@@ -57,14 +88,36 @@ namespace DiscordWidgetDisplay
             }
         }
 
-        private void NavigateVoice(string location, bool save = true)
+        private void ChatAddressBoxKeyDown(object sender, KeyEventArgs e)
         {
-            webView.CoreWebView2.Navigate(VoiceAddressBox.Text);
-            if (save)
+            if(e.Key == Key.Enter)
             {
-                Settings.LastVoiceLocation = VoiceAddressBox.Text;
-                Settings.Save();
+                NavigateChat(ChatAddressBox.Text);
             }
+        }
+
+        private string SantizeUrl(string location)
+        {
+            if(!location.StartsWith("http"))
+            {
+                location = "https://" + location;
+            }
+
+            return location.Replace("limit_speaking=true", "limit_speaking=True");
+        }
+
+        private void NavigateVoice(string location)
+        {
+            VoiceWebView.CoreWebView2.Navigate(SantizeUrl(location));
+            Settings.LastVoiceLocation = location;
+            Settings.Save();
+        }
+
+        private void NavigateChat(string location)
+        {
+            ChatWebView.CoreWebView2.Navigate(SantizeUrl(location));
+            Settings.LastChatLocation = location;
+            Settings.Save();
         }
     }
 }

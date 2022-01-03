@@ -82,14 +82,16 @@
             </DockPanel>
             <DockPanel LastChildFill="True" Margin="1">
                 <TextBlock Text="Chat " DockPanel.Dock="Left" />
-                <Button DockPanel.Dock="Right" Margin="2,0,0,0" Style="{DynamicResource TitleButton}">
+                <Button DockPanel.Dock="Right" Margin="2,0,0,0" Style="{DynamicResource TitleButton}" Click="ChatAddressGoButton">
                     Go
                 </Button>
-                <TextBox x:Name="ChatAddressBox" HorizontalAlignment="Stretch" />
+                <TextBox x:Name="ChatAddressBox" HorizontalAlignment="Stretch" PreviewKeyDown="ChatAddressBoxKeyDown" />
             </DockPanel>
         </StackPanel>
 
-        <wv2:WebView2 Name="webView" DefaultBackgroundColor="transparent" Height="600" Width="312" />
+        <wv2:WebView2 Name="ChatWebView" DefaultBackgroundColor="transparent" Height="215" Width="580" DockPanel.Dock="Top" />
+
+        <wv2:WebView2 Name="VoiceWebView" DefaultBackgroundColor="transparent" Height="600" Width="312" HorizontalAlignment="Left" />
         
     </DockPanel>
 </Window>

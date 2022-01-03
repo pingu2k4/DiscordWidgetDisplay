@@ -59,4 +59,10 @@ internal class Settings
     }
 
     public string? LastVoiceLocation { get; set; } = null;
+
+    public string? LastChatLocation { get; set; } = null;
+
+    public double? Top { get; set; } = null;
+
+    public double? Left { get; set; } = null;
 }
