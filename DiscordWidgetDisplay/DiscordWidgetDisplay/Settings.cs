@@ -65,4 +65,8 @@ internal class Settings
     public double? Top { get; set; } = null;
 
     public double? Left { get; set; } = null;
+
+    public bool VoiceVisible { get; set; } = true;
+
+    public bool ChatVisible { get; set; } = false;
 }

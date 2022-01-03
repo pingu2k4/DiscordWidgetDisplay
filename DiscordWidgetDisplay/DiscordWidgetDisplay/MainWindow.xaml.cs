@@ -52,6 +52,9 @@ namespace DiscordWidgetDisplay
                 this.Left = Settings.Left.Value;
             }
 
+            ShowVoiceToggle.IsChecked = Settings.VoiceVisible;
+            ShowChatToggle.IsChecked = Settings.ChatVisible;
+
             await VoiceWebView.EnsureCoreWebView2Async();
             await ChatWebView.EnsureCoreWebView2Async();
 
@@ -123,6 +126,18 @@ namespace DiscordWidgetDisplay
         {
             ChatWebView.CoreWebView2.Navigate(SantizeUrl(location));
             Settings.LastChatLocation = location;
+            Settings.Save();
+        }
+
+        private void VoiceToggleChanged(object sender, RoutedEventArgs e)
+        {
+            Settings.VoiceVisible = ShowVoiceToggle.IsChecked ?? true;
+            Settings.Save();
+        }
+
+        private void ChatToggleChanged(object sender, RoutedEventArgs e)
+        {
+            Settings.ChatVisible = ShowChatToggle.IsChecked ?? true;
             Settings.Save();
         }
     }

@@ -62,6 +62,14 @@
                 <Button Style="{DynamicResource TitleButton}" Margin="1,1,0,1" Click="ReloadClicked">
                     <Image Source="pack://application:,,,/Images/Reload.png" Margin="1"></Image>
                 </Button>
+                <ToggleButton x:Name="ShowVoiceToggle" Style="{DynamicResource TitleToggle}" Margin="1,0,0,0"
+                              Checked="VoiceToggleChanged" Unchecked="VoiceToggleChanged">
+                    Voice
+                </ToggleButton>
+                <ToggleButton x:Name="ShowChatToggle" Style="{DynamicResource TitleToggle}" Margin="1,0,0,0"
+                              Checked="ChatToggleChanged" Unchecked="ChatToggleChanged">
+                    Chat
+                </ToggleButton>
             </StackPanel>
         </Border>
 
@@ -93,9 +101,31 @@
             </DockPanel>
         </StackPanel>
 
-        <wv2:WebView2 Name="ChatWebView" DefaultBackgroundColor="transparent" Height="215" Width="580" DockPanel.Dock="Top" />
+        <wv2:WebView2 Name="ChatWebView" DefaultBackgroundColor="transparent" Height="215" Width="580" DockPanel.Dock="Top">
+            <wv2:WebView2.Style>
+                <Style TargetType="wv2:WebView2">
+                    <Setter Property="Visibility" Value="Visible" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=IsChecked, ElementName=ShowChatToggle}" Value="False">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </wv2:WebView2.Style>
+        </wv2:WebView2>
 
-        <wv2:WebView2 Name="VoiceWebView" DefaultBackgroundColor="transparent" Height="600" Width="312" HorizontalAlignment="Left" />
+        <wv2:WebView2 Name="VoiceWebView" DefaultBackgroundColor="transparent" Height="600" Width="312" HorizontalAlignment="Left">
+            <wv2:WebView2.Style>
+                <Style TargetType="wv2:WebView2">
+                    <Setter Property="Visibility" Value="Visible" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=IsChecked, ElementName=ShowVoiceToggle}" Value="False">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </wv2:WebView2.Style>
+        </wv2:WebView2>
         
     </DockPanel>
 </Window>
