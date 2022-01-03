@@ -23,11 +23,19 @@ namespace DiscordWidgetDisplay
         public MainWindow()
         {
             InitializeComponent();
+            Settings = Settings.Load();
             InitializeAsync();
         }
 
+        private Settings Settings { get; set; }
+
         async void InitializeAsync()
         {
+            if (Settings.LastVoiceLocation is not null)
+            {
+                webView.Source = new Uri(Settings.LastVoiceLocation);
+                VoiceAddressBox.Text = Settings.LastVoiceLocation;
+            }
             await webView.EnsureCoreWebView2Async();
         }
 
@@ -38,20 +46,25 @@ namespace DiscordWidgetDisplay
 
         private void VoiceAddressGoButton(object sender, RoutedEventArgs e)
         {
-            NavigateVoice();
+            NavigateVoice(VoiceAddressBox.Text);
         }
 
         private void VoiceAddressBoxKeyDown(object sender, KeyEventArgs e)
         {
             if(e.Key == Key.Enter)
             {
-                NavigateVoice();
+                NavigateVoice(VoiceAddressBox.Text);
             }
         }
 
-        private void NavigateVoice()
+        private void NavigateVoice(string location, bool save = true)
         {
             webView.CoreWebView2.Navigate(VoiceAddressBox.Text);
+            if (save)
+            {
+                Settings.LastVoiceLocation = VoiceAddressBox.Text;
+                Settings.Save();
+            }
         }
     }
 }

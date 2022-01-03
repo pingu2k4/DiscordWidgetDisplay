@@ -10,8 +10,7 @@
         AllowsTransparency="True"
         WindowStyle="None"
         Topmost="True"
-        Height="620"
-        Width="312">
+        SizeToContent="WidthAndHeight">
 
     <Window.Resources>
         <Style x:Key="TitleToggle" TargetType="ToggleButton" BasedOn="{StaticResource {x:Type ToggleButton}}">
@@ -90,7 +89,7 @@
             </DockPanel>
         </StackPanel>
 
-        <wv2:WebView2 Name="webView" DefaultBackgroundColor="transparent" />
+        <wv2:WebView2 Name="webView" DefaultBackgroundColor="transparent" Height="600" Width="312" />
         
     </DockPanel>
 </Window>
