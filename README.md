@@ -21,6 +21,7 @@ I'm glad you asked! I actually went a little beyond what I initially set out to 
 Sure! Here are both windows voice and chat sections toggled on. You can see that Pingu is talking, along with some voice chat above.
 The voice chat is transparent, so what you can see behind is my desktop background.
 ![image](https://user-images.githubusercontent.com/11229848/147995550-f84c5630-52d0-4361-bc7b-57224e41e1a0.png)
+
 When the text chat is hidden, you will only see the red bar (with less width than shown) and then people who chat.
 
 ## How do I get this?
