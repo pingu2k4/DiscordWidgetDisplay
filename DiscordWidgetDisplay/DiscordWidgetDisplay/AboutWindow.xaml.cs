@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -24,6 +25,8 @@ namespace DiscordWidgetDisplay
             InitializeComponent();
         }
 
+        public string Version => Assembly.GetExecutingAssembly().GetName().Version?.ToString() ?? "";
+
         private void DiscordStreamkitCLicked(object sender, RoutedEventArgs e)
         {
             OpenUrl("https://streamkit.discord.com/overlay");
@@ -32,6 +35,11 @@ namespace DiscordWidgetDisplay
         private void GithubRepoClicked(object sender, RoutedEventArgs e)
         {
             OpenUrl("https://github.com/pingu2k4/DiscordWidgetDisplay");
+        }
+
+        private void OpenDataFolder(object sender, RoutedEventArgs e)
+        {
+            OpenUrl(Settings.DataFilePath);
         }
 
         private void OpenUrl(string location)
