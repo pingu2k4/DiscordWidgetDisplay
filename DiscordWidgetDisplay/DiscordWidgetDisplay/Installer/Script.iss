@@ -5,10 +5,10 @@
 
 ;--------------------------------
 
-#define AppName "Opensea Lister"
-#define AppPath "..\bin\Release\net5.0-windows\publish\\"
+#define AppName "Discord Widget Display"
+#define AppPath "..\bin\Release\net6.0-windows\publish\\"
 #define OutputPath "..\bin\Installers\\"
-#define AppExecutableName "OpenseaLister.UI.exe"
+#define AppExecutableName "DiscordWidgetDisplay.exe"
 #define AppVersion GetFileVersion(AppPath + AppExecutableName)
 #define AppPublisher "PinguApps"
 #define AppURL "http://www.pinguapps.com"
@@ -16,7 +16,7 @@
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{A14CFF66-836C-4837-B8DC-24514C40B859}
+AppId={{4441D15A-7354-4E47-8234-5C9B87BC6C4E}
 AppName={#AppName}
 AppVersion={#AppVersion}
 AppPublisher={#AppPublisher}
@@ -32,7 +32,7 @@ OutputDir={#OutputPath}
 OutputBaseFilename="{#AppName} {#AppVersion}"
 Compression=lzma2
 SolidCompression=yes
-WizardSmallImageFile=Logos\PinguLabs100.bmp,Logos\PinguLabs125.bmp,Logos\PinguLabs150.bmp,Logos\PinguLabs175.bmp,Logos\PinguLabs200.bmp,Logos\PinguLabs225.bmp,Logos\PinguLabs250.bmp
+WizardSmallImageFile=Logos\PinguApps100.bmp,Logos\PinguApps125.bmp,Logos\PinguApps150.bmp,Logos\PinguApps175.bmp,Logos\PinguApps200.bmp,Logos\PinguApps225.bmp,Logos\PinguApps250.bmp
 WizardStyle=modern
 
 [Languages]
