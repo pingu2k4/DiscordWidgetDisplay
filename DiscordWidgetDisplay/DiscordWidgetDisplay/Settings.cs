@@ -18,6 +18,9 @@ internal class Settings
     [JsonIgnore]
     internal static string AppSettingsFileName => $"{AppSettingsPath}Application.settings";
 
+    [JsonIgnore]
+    internal static string WebviewUserDataFolder => $"{DataFilePath}Webview\\";
+
     public void Save()
     {
         if(!Directory.Exists(AppSettingsPath))

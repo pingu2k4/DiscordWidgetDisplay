@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,16 +32,9 @@ namespace DiscordWidgetDisplay
 
         async void InitializeAsync()
         {
-            if (Settings.LastVoiceLocation is not null)
+            if(!Directory.Exists(Settings.WebviewUserDataFolder))
             {
-                VoiceWebView.Source = new Uri(SantizeUrl(Settings.LastVoiceLocation));
-                VoiceAddressBox.Text = Settings.LastVoiceLocation;
-            }
-
-            if(Settings.LastChatLocation is not null)
-            {
-                ChatWebView.Source = new Uri(SantizeUrl(Settings.LastChatLocation));
-                ChatAddressBox.Text = Settings.LastChatLocation;
+                Directory.CreateDirectory(Settings.WebviewUserDataFolder);
             }
 
             if (Settings.Top is not null)
@@ -56,9 +50,22 @@ namespace DiscordWidgetDisplay
             ShowChatToggle.IsChecked = Settings.ChatVisible;
             TopmostToggle.IsChecked = Settings.Topmost;
 
-            await VoiceWebView.EnsureCoreWebView2Async();
-            await ChatWebView.EnsureCoreWebView2Async();
+            var webviewInvironment = await Microsoft.Web.WebView2.Core.CoreWebView2Environment.CreateAsync(null, Settings.WebviewUserDataFolder);
 
+            await VoiceWebView.EnsureCoreWebView2Async(webviewInvironment);
+            await ChatWebView.EnsureCoreWebView2Async(webviewInvironment);
+
+            if (Settings.LastVoiceLocation is not null)
+            {
+                VoiceWebView.Source = new Uri(SantizeUrl(Settings.LastVoiceLocation));
+                VoiceAddressBox.Text = Settings.LastVoiceLocation;
+            }
+
+            if (Settings.LastChatLocation is not null)
+            {
+                ChatWebView.Source = new Uri(SantizeUrl(Settings.LastChatLocation));
+                ChatAddressBox.Text = Settings.LastChatLocation;
+            }
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
